@@ -1,11 +1,10 @@
-//your JS code here. If required.
 document.getElementById("getWeatherBtn").addEventListener("click", getWeather);
 
 function getWeather() {
-  const apiKey = "YOUR_API_KEY_HERE"; // Replace this with your OpenWeatherMap API key
+  const apiKey = "b6907d289e10d714a6e88b30761fae22"; // Example API key from OpenWeatherMap demo (or use your own)
   const city = "London";
 
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+  fetch(`https://openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
       const weather = data.weather[0].main;
