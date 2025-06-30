@@ -1,11 +1,16 @@
 document.getElementById("getWeatherBtn").addEventListener("click", getWeather);
 
 function getWeather() {
-  const apiKey = "b6907d289e10d714a6e88b30761fae22"; // Example API key from OpenWeatherMap demo (or use your own)
+  const apiKey = "YOUR_API_KEY"; // Replace with your own OpenWeatherMap API key
   const city = "London";
 
-  fetch(`https://openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-    .then(response => response.json())
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
     .then(data => {
       const weather = data.weather[0].main;
       document.getElementById("weatherData").innerText = `Current weather in ${city}: ${weather}`;
